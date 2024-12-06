@@ -1,0 +1,10 @@
+.richText {
+  color: #46000C;
+  background-color: rgb(225, 220, 205,0.7);
+  :first-child {
+    margin-top: 0;
+  }
+  :last-child {
+    margin-bottom: 0;
+  }
+}
