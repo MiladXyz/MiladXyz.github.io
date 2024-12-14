@@ -3,6 +3,8 @@ import next from 'next'
 import nextBuild from 'next/dist/build'
 import path from 'path'
 
+import 'dotenv/config'
+
 dotenv.config({
   path: path.resolve(__dirname, '../.env'),
 })
