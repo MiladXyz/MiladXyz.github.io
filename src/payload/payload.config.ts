@@ -29,8 +29,6 @@ import { Settings } from './globals/Settings'
 import { priceUpdated } from './stripe/webhooks/priceUpdated'
 import { productUpdated } from './stripe/webhooks/productUpdated'
 
-import 'dotenv/config'
-
 const generateTitle: GenerateTitle = () => {
   return 'My Store'
 }
