@@ -20,7 +20,15 @@ export default async function Login() {
     <section className={classes.login}>
       <div className={classes.heroImg}>
         <Link href="/">
-          <Image src="/logo.png" alt="logo" width={150} height={150} className={classes.logo} />
+          <Image
+            style={{ width: 'auto', height: 'auto' }}
+            src="/logo.png"
+            alt="logo"
+            width={150}
+            height={150}
+            className={classes.logo}
+            priority={true}
+          />
         </Link>
       </div>
       <div className={classes.formWrapper}>

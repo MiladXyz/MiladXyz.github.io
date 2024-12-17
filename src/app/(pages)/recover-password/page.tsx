@@ -14,7 +14,15 @@ export default async function RecoverPassword() {
     <section className={classes.recoverPassword}>
       <div className={classes.heroImg}>
         <Link href="/">
-          <Image src="/logo.png" alt="logo" width={150} height={150} className={classes.logo} />
+          <Image
+            style={{ width: 'auto', height: 'auto' }}
+            src="/logo.png"
+            alt="logo"
+            width={150}
+            height={150}
+            className={classes.logo}
+            priority={true}
+          />
         </Link>
       </div>
 
