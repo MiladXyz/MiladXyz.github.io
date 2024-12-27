@@ -17,25 +17,7 @@ const vazir = Vazirmatn({
   variable: '--font-vazir',
 })
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <InitTheme />
-        <link rel="icon" href="/favicon.ico" sizes="32x32" />
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-      </head>
-      <body className={vazir.variable}>
-        <Providers>
-          <AdminBar />
-          {/* @ts-expect-error */}
-          <Header />
-          <main> {children}</main>
-          {/* @ts-expect-error */}
-          <Footer />
-        </Providers>
-      </body>
-    </html>
-  )
+  return <h1>hello world</h1>
 }
 
 export const metadata: Metadata = {
