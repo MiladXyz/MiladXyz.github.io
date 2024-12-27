@@ -2,7 +2,7 @@
 
 import React, { useCallback, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 
 import { Button } from '../../../_components/Button'
 import { Input } from '../../../_components/Input'
@@ -20,8 +20,8 @@ export const ResetPasswordForm: React.FC = () => {
   const [error, setError] = useState('')
   const { login } = useAuth()
   const router = useRouter()
-  // const searchParams = useSearchParams()
-  // const token = searchParams.get('token')
+  const searchParams = useSearchParams()
+  const token = searchParams.get('token')
 
   const {
     register,
@@ -60,9 +60,9 @@ export const ResetPasswordForm: React.FC = () => {
 
   // when Next.js populates token within router,
   // reset form with new token value
-  // useEffect(() => {
-  //   reset({ token: token || undefined })
-  // }, [reset, token])
+  useEffect(() => {
+    reset({ token: token || undefined })
+  }, [reset, token])
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>

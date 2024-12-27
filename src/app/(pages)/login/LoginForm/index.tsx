@@ -3,7 +3,7 @@
 import React, { useCallback, useRef } from 'react'
 import { useForm } from 'react-hook-form'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 
 import { Button } from '../../../_components/Button'
 import { Input } from '../../../_components/Input'
@@ -18,9 +18,9 @@ type FormData = {
 }
 
 const LoginForm: React.FC = () => {
-  // const searchParams = useSearchParams()
-  // const allParams = searchParams.toString() ? `?${searchParams.toString()}` : ''
-  // const redirect = useRef(searchParams.get('redirect'))
+  const searchParams = useSearchParams()
+  const allParams = searchParams.toString() ? `?${searchParams.toString()}` : ''
+  const redirect = useRef(searchParams.get('redirect'))
   const { login } = useAuth()
   const router = useRouter()
   const [error, setError] = React.useState<string | null>(null)
@@ -31,23 +31,22 @@ const LoginForm: React.FC = () => {
     formState: { errors, isLoading },
   } = useForm<FormData>()
 
-  // const onSubmit = useCallback(
-  //   async (data: FormData) => {
-  //     try {
-  //       await login(data)
-  //       if (redirect?.current) router.push(redirect.current as string)
-  //       else router.push('/')
-  //       window.location.href = '/'
-  //     } catch (_) {
-  //       setError('There was an error with the credentials provided. Please try again.')
-  //     }
-  //   },
-  //   [login, router],
-  // )
+  const onSubmit = useCallback(
+    async (data: FormData) => {
+      try {
+        await login(data)
+        if (redirect?.current) router.push(redirect.current as string)
+        else router.push('/')
+        window.location.href = '/'
+      } catch (_) {
+        setError('There was an error with the credentials provided. Please try again.')
+      }
+    },
+    [login, router],
+  )
 
   return (
-    // <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
-    <form className={classes.form}>
+    <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
       <Message error={error} className={classes.message} />
       <Input
         name="email"
@@ -73,9 +72,9 @@ const LoginForm: React.FC = () => {
         className={classes.submit}
       />
       <div className={classes.links}>
-        {/* <Link href={`/create-account${allParams}`}>ساخت حساب کاربری</Link> */}
+        <Link href={`/create-account${allParams}`}>ساخت حساب کاربری</Link>
         <br />
-        {/* <Link href={`/recover-password${allParams}`}>بازیابی رمز ورود</Link> */}
+        <Link href={`/recover-password${allParams}`}>بازیابی رمز ورود</Link>
       </div>
     </form>
   )
