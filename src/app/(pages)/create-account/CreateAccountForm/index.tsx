@@ -3,7 +3,7 @@
 import React, { useCallback, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import Link from 'next/link'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
 import { Button } from '../../../_components/Button'
 import { Input } from '../../../_components/Input'
@@ -20,8 +20,8 @@ type FormData = {
 }
 
 const CreateAccountForm: React.FC = () => {
-  const searchParams = useSearchParams()
-  const allParams = searchParams.toString() ? `?${searchParams.toString()}` : ''
+  // const searchParams = useSearchParams()
+  // const allParams = searchParams.toString() ? `?${searchParams.toString()}` : ''
   const { login } = useAuth()
   const router = useRouter()
   const [loading, setLoading] = useState(false)
@@ -53,7 +53,7 @@ const CreateAccountForm: React.FC = () => {
         return
       }
 
-      const redirect = searchParams.get('redirect')
+      // const redirect = searchParams.get('redirect')
 
       const timer = setTimeout(() => {
         setLoading(true)
@@ -62,15 +62,15 @@ const CreateAccountForm: React.FC = () => {
       try {
         await login(data)
         clearTimeout(timer)
-        if (redirect) router.push(redirect as string)
-        else router.push(`/`)
+        // if (redirect) router.push(redirect as string)
+        // else router.push(`/`)
         window.location.href = '/'
       } catch (_) {
         clearTimeout(timer)
         setError('There was an error with the credentials provided. Please try again.')
       }
     },
-    [login, router, searchParams],
+    [login, router, URLSearchParams],
   )
 
   return (
@@ -118,7 +118,7 @@ const CreateAccountForm: React.FC = () => {
       />
       <div>
         {'حساب کاربری دارید؟ '}
-        <Link href={`/login${allParams}`}>ورود</Link>
+        {/* <Link href={`/login${allParams}`}>ورود</Link> */}
       </div>
     </form>
   )
