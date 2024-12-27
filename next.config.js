@@ -1,9 +1,11 @@
 /** @type {import('next').NextConfig} */
+const { experimental_use } = require('react')
 const ContentSecurityPolicy = require('./csp')
 const redirects = require('./redirects')
 
 const nextConfig = {
   reactStrictMode: true,
+  experimental_use: true,
   swcMinify: true,
   images: {
     domains: ['localhost', process.env.NEXT_PUBLIC_SERVER_URL]
