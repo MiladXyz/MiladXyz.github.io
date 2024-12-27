@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react'
+import React from 'react'
 import { Metadata } from 'next'
 
 import { mergeOpenGraph } from '../../_utilities/mergeOpenGraph'
@@ -8,13 +8,11 @@ import classes from './index.module.scss'
 
 export default async function ResetPassword() {
   return (
-    <Suspense fallback={null}>
-      <div className={classes.resetPassword}>
-        <h1>بازیابی رمز ورود</h1>
-        <p>لطفا رمز ورود جدیدی وارد کنید</p>
-        <ResetPasswordForm />
-      </div>
-    </Suspense>
+    <div className={classes.resetPassword}>
+      <h1>بازیابی رمز ورود</h1>
+      <p>لطفا رمز ورود جدیدی وارد کنید</p>
+      <ResetPasswordForm />
+    </div>
   )
 }
 
