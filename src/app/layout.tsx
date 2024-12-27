@@ -17,5 +17,32 @@ const vazir = Vazirmatn({
   variable: '--font-vazir',
 })
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  return <div>hi</div>
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <InitTheme />
+        <link rel="icon" href="/favicon.ico" sizes="32x32" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+      </head>
+      <body className={vazir.variable}>
+        <Providers>
+          <AdminBar />
+          {/* @ts-expect-error */}
+          <Header />
+          <main> {children}</main>
+          {/* @ts-expect-error */}
+          <Footer />
+        </Providers>
+      </body>
+    </html>
+  )
+}
+
+export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SERVER_URL || 'https://payloadcms.com'),
+  twitter: {
+    card: 'summary_large_image',
+    creator: '@payloadcms',
+  },
+  openGraph: mergeOpenGraph(),
 }

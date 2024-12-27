@@ -3,7 +3,6 @@
 import { useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
 
-// import { useSearchParams } from 'next/navigation'
 import { Message } from '../Message'
 
 import classes from './index.module.scss'
