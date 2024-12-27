@@ -17,14 +17,5 @@ const vazir = Vazirmatn({
   variable: '--font-vazir',
 })
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  return <h1>hello world</h1>
-}
-
-export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SERVER_URL || 'https://payloadcms.com'),
-  twitter: {
-    card: 'summary_large_image',
-    creator: '@payloadcms',
-  },
-  openGraph: mergeOpenGraph(),
+  return <div>hi</div>
 }

@@ -1,5 +1,9 @@
-import PageTemplate, { generateMetadata } from './(pages)/[slug]/page'
+// import PageTemplate, { generateMetadata } from './(pages)/[slug]/page'
 
-export default PageTemplate
+// export default <div>hi</div>
 
-export { generateMetadata }
+// export { generateMetadata }
+
+export default async function Login() {
+  return <div>hello</div>
+}
